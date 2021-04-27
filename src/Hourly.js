@@ -29,7 +29,7 @@ var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
                     display="flex" justifyContent="center" alignItems="center"
                     height={50} width={300} border={1} m={2.5}>
                     <Box mr={5}>{timeConverter(cur.dt)}</Box>
-                    {cur.temp}°
+                    {cur.temp}° 
                     {cur.weather[0].main} 
                     </Box>
                 ]
