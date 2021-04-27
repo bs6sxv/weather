@@ -1,3 +1,33 @@
+.weather-app {
+
+  display: flex;
+  flex-direction: column;
+  width: 820px;
+  min-height: 400px;
+  background: #cbd2f3;
+  text-align: center;
+  margin: 128px auto;
+  border-radius: 10px;
+  padding-bottom: 32px;
+  align-items: center;
+  
+}
+
+.weather1-app {
+
+  display: flex;
+  flex-direction: column;
+  width: 820px;
+  min-height: 400px;
+  background: #cbd2f3;
+  text-align: center;
+  margin: 128px auto;
+  border-radius: 10px;
+  padding-bottom: 32px;
+  align-items: center;
+  
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +44,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #93afe5;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +65,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+body {
+  background-color: #7b98be;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
