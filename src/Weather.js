@@ -51,7 +51,7 @@ const icon = (type) => {
             <h2 style={{fontSize: 27}}>{(JSON.stringify(((weather.weather)[0]).main, undefined, 4)).replace(/^"(.*)"$/, '$1')}</h2>
             <h3 style={{fontSize: 17}}>Feels Like: {(JSON.stringify(weather.main.feels_like, undefined, 4)).replace(/^"(.*)"$/, '$1')}°</h3>
             <h3 style={{fontSize: 17}}>Pressure: {(JSON.stringify(weather.main.pressure, undefined, 4)).replace(/^"(.*)"$/, '$1')}</h3>
-            <h3 style={{fontSize: 17}}>Humidity: {(JSON.stringify(weather.main.humidity, undefined, 4)).replace(/^"(.*)"$/, '$1')}°</h3>
+            <h3 style={{fontSize: 17}}>Humidity: {(JSON.stringify(weather.main.humidity, undefined, 4)).replace(/^"(.*)"$/, '$1')}%</h3>
             <h3 style={{fontSize: 17}}>Wind Speed: {(JSON.stringify(weather.wind.speed, undefined, 4)).replace(/^"(.*)"$/, '$1')} mph</h3></Box>
         </div>
     );
