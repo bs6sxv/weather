@@ -31,7 +31,7 @@ const icon = (type) => {
   />
       );}
       if (type==="Clear"){
-        return (
+        return ( 
              <ReactAnimatedWeather
         icon={clear.icon}
         color={clear.color}
