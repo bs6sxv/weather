@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../../../Forge/LaunchSWE-1"
+		},
+		{
+			"path": "../../counter"
+		},
+		{
+			"path": "../../todoapp"
+		},
+		{
+			"path": "../../asynchronous-javascript/async-await"
+		},
+		{
+			"path": "../../my-app"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

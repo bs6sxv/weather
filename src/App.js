@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./keys";
 import Weather from "./Weather"
 import Hourly from "./Hourly"
 import Weekly from "./Weekly"
 import API_KEY from "./keys"
 import './App.css';
-import { AppBar, Tabs, Tab, Input, Button, TextField , Typography, IconButton} from "@material-ui/core";
+import { AppBar, Tab, Input, Button, IconButton} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { TabContext, TabList, TabPanel } from '@material-ui/lab';
 
@@ -22,7 +22,7 @@ function App() {
 
   const getWeather= () => {
     const url = new URL("https://api.openweathermap.org/data/2.5/weather");
-    if (city != "") {
+    if (city !== "") {
       url.searchParams.append("q", city);
     } else {
       url.searchParams.append("zip", zipCode);
@@ -93,14 +93,6 @@ OR
       </div>
     )
   }
-  // let itemsToRender;
-  // if (weeklyHourly) {
-  //   itemsToRender = weeklyHourly.hourly.map(item => {
-  //     return <Hourly
-  //     current={item}
-  //   /> 
-  //   });
-  // }
   return (
     <div className="weather1-app" style={{ textAlign: "center" }}>
       <span><Input placeholder="Search by ZipCode" type="number" onChange={handleCurrentWeather} />
@@ -127,11 +119,13 @@ OR
   <TabPanel value="2"> 
   <Hourly
           current={weeklyHourly}
+          weather={weather}
         />
         </TabPanel>
   <TabPanel value="3">
   <Weekly
           current2={weeklyHourly}
+          weather={weather}
         />
     </TabPanel>
 </TabContext>
