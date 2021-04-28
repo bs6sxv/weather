@@ -109,7 +109,7 @@ OR
     <TabList variant="fullWidth" onChange={handleChange} aria-label="simple tabs example">
       <Tab label="Current Weather" value="1" />
       <Tab label="Hourly" value="2" />
-      <Tab label="Weekly" value="3" />
+      <Tab label="Daily" value="3" />
     </TabList>
   </AppBar>
   <TabPanel value="1">

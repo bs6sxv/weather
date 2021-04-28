@@ -30,6 +30,13 @@ var time = " " + hour + ':' + min;
 return time;
   }
 
+  const timeConverter3 = (UNIX_timestamp) => {
+    var a = new Date(UNIX_timestamp * 1000);
+var hour = a.getHours();
+var min = a.getMinutes();
+var time = " " + hour + ':' + min +"0";
+return time;
+}
   const toRegularTime = (militaryTime) => {
     const [hours, minutes] = militaryTime.split(':');
     return `${(hours > 12) ? hours - 12 : hours}:${minutes} ${(hours >= 12) ? 'PM' : 'AM'}`;
@@ -107,7 +114,7 @@ return time;
                     borderRadius={16} boxShadow={2} bgcolor="white">
                     <Box mr={8}><h4>{timeConverter(cur.dt)}</h4></Box>
                     {/* {cur.temp}° */}
-                    <Box mr={5}><span style={{fontSize: 25, fontWeight: "bold"}}> {cur.temp.day}°</span>/ {cur.temp.min}</Box>
+                    <Box mr={5}><span style={{fontSize: 25, fontWeight: "bold"}}> {cur.temp.day}°</span>/ {cur.temp.min}°</Box>
                     <Box mr={2}>{icon(cur.weather[0].main)} </Box>
                     <Box mr={5}><h3>{cur.weather[0].main}</h3></Box>
                     <Box mr={1}><img className="photo" src={wind}  /></Box>
@@ -118,7 +125,7 @@ return time;
           <Typography>
           <Box height={5} display="flex" justifyContent="center" alignItems="center">
           <Box ml={6} mr={5} style={{fontSize: 17}}><h4><img className="photo" src={sunrise}  /> Sunrise: {toRegularTime(timeConverter2(cur.sunrise))}</h4></Box>
-          <Box mr={5} style={{fontSize: 17}}><h4> <img className="photo" src={sunset}  /> Sunset: {toRegularTime(timeConverter2(cur.sunset))}</h4></Box>
+          <Box mr={5} style={{fontSize: 17}}><h4> <img className="photo" src={sunset}  /> Sunset: {toRegularTime(timeConverter3(cur.sunset))}</h4></Box>
         
           </Box >
           <Box display="flex" justifyContent="center" alignItems="center">
