@@ -90,7 +90,7 @@ const toRegularTime = (militaryTime) => {
 <div>
             <h1 style={{marginTop:20}}> {(JSON.stringify(weather.name, undefined, 4)).replace(/^"(.*)"$/, '$1')}</h1>
             <div> {current.hourly.map((cur)=> {
-                return [
+                return (
                     <Box 
                     display="flex" justifyContent="center" alignItems="center"
                     height={80} width={650} border={1} m={2.5}
@@ -102,7 +102,7 @@ const toRegularTime = (militaryTime) => {
                     <Box mr={1}><img className="photo" src={wind}  /></Box>
                     {cur.wind_speed} mph
                     </Box>
-                ]
+                )
             })}
             </div> 
         </div>

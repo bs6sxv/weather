@@ -102,7 +102,7 @@ return time;
 <div>
 <h1 style={{marginTop:20}}> {(JSON.stringify(weather.name, undefined, 4)).replace(/^"(.*)"$/, '$1')}</h1>
             <div> {current2.daily.map((cur)=> {
-                return [
+                return (
                   <Accordion style={{backgroundColor: "transparent"}}>
                     <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -138,7 +138,7 @@ return time;
         </AccordionDetails>
                     
                     </Accordion>
-                ]
+                )
             })}
             </div> 
         </div>
