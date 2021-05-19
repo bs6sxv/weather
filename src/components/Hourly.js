@@ -2,16 +2,11 @@ import React from "react";
 import Box from '@material-ui/core/Box';
 import ReactAnimatedWeather from 'react-animated-weather';
 import wind from './wind.png';
+import {sunsetConverter} from "../utils/timeConverters"
 
 export default function Hourly ({current, weather}) {
 
-    const timeConverter = (UNIX_timestamp) => {
-        var a = new Date(UNIX_timestamp * 1000);
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var time = " " + hour + ':' + min + "0";
-  return time;
-    }
+
 const cloudy = {
     icon: 'CLOUDY',
     color: 'grey',
@@ -95,7 +90,7 @@ const toRegularTime = (militaryTime) => {
                     display="flex" justifyContent="center" alignItems="center"
                     height={80} width={650} border={1} m={2.5}
                     borderRadius={16} boxShadow={3} bgcolor="white">
-                    <Box mr={8}>{toRegularTime(timeConverter(cur.dt))}</Box>
+                    <Box mr={8}>{toRegularTime(sunsetConverter(cur.dt))}</Box>
                     <Box mr={6}><span style={{fontSize: 25, fontWeight: "bold"}}>{cur.temp}° </span></Box>
                     <Box mr={3}>{icon(cur.weather[0].main)} </Box>
                     <Box mr={7}><h3>{cur.weather[0].main}</h3></Box> 

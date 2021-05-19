@@ -9,34 +9,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import wind from './wind.png';
 import sunrise from './sunrisee.png'; 
 import sunset from './sunset.png'; 
+import {dateConverter, sunriseConverter, sunsetConverter} from "../utils/timeConverters";
 
 
 export default function Hourly ({current2, weather}) {
 
-    const timeConverter = (UNIX_timestamp) => {
-        var a = new Date(UNIX_timestamp * 1000);
-var months = ['Jan','Feb','Mar','April','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var time = month + ' ' + date  ;
-  return time;
-    }
-
-    const timeConverter2 = (UNIX_timestamp) => {
-      var a = new Date(UNIX_timestamp * 1000);
-var hour = a.getHours();
-var min = a.getMinutes();
-var time = " " + hour + ':' + min;
-return time;
-  }
-
-  const timeConverter3 = (UNIX_timestamp) => {
-    var a = new Date(UNIX_timestamp * 1000);
-var hour = a.getHours();
-var min = a.getMinutes();
-var time = " " + hour + ':' + min +"0";
-return time;
-}
   const toRegularTime = (militaryTime) => {
     const [hours, minutes] = militaryTime.split(':');
     return `${(hours > 12) ? hours - 12 : hours}:${minutes} ${(hours >= 12) ? 'PM' : 'AM'}`;
@@ -124,8 +101,8 @@ return time;
                     <AccordionDetails>
           <Typography>
           <Box height={5} display="flex" justifyContent="center" alignItems="center">
-          <Box ml={6} mr={5} style={{fontSize: 17}}><h4><img className="photo" src={sunrise}  /> Sunrise: {toRegularTime(timeConverter2(cur.sunrise))}</h4></Box>
-          <Box mr={5} style={{fontSize: 17}}><h4> <img className="photo" src={sunset}  /> Sunset: {toRegularTime(timeConverter3(cur.sunset))}</h4></Box>
+          <Box ml={6} mr={5} style={{fontSize: 17}}><h4><img className="photo" src={sunrise}  /> Sunrise: {toRegularTime(sunriseConverter(cur.sunrise))}</h4></Box>
+          <Box mr={5} style={{fontSize: 17}}><h4> <img className="photo" src={sunset}  /> Sunset: {toRegularTime(sunsetConverter(cur.sunset))}</h4></Box>
         
           </Box >
           <Box display="flex" justifyContent="center" alignItems="center">
