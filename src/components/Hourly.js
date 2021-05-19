@@ -2,7 +2,7 @@ import React from "react";
 import Box from '@material-ui/core/Box';
 import ReactAnimatedWeather from 'react-animated-weather';
 import wind from './wind.png';
-import {sunsetConverter} from "../utils/timeConverters"
+import {sunsetConverter, toRegularTime} from "../utils/timeConverters"
 
 export default function Hourly ({current, weather}) {
 
@@ -76,10 +76,7 @@ const icon = (type) => {
 };
 
 
-const toRegularTime = (militaryTime) => {
-    const [hours, minutes] = militaryTime.split(':');
-    return `${(hours > 12) ? hours - 12 : hours}:${minutes} ${(hours >= 12) ? 'PM' : 'AM'}`;
-}
+
 
     return (
 <div>

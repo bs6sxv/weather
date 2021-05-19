@@ -35,3 +35,8 @@ export const sunsetConverter = (UNIX_timestamp) => {
   var time = " " + hour + ":" + min + "0";
   return time;
 };
+
+export const toRegularTime = (militaryTime) => {
+  const [hours, minutes] = militaryTime.split(':');
+  return `${(hours > 12) ? hours - 12 : hours}:${minutes} ${(hours >= 12) ? 'PM' : 'AM'}`;
+}

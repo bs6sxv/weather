@@ -9,15 +9,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import wind from './wind.png';
 import sunrise from './sunrisee.png'; 
 import sunset from './sunset.png'; 
-import {dateConverter, sunriseConverter, sunsetConverter} from "../utils/timeConverters";
+import {dateConverter, sunriseConverter, sunsetConverter, toRegularTime} from "../utils/timeConverters";
 
 
 export default function Hourly ({current2, weather}) {
 
-  const toRegularTime = (militaryTime) => {
-    const [hours, minutes] = militaryTime.split(':');
-    return `${(hours > 12) ? hours - 12 : hours}:${minutes} ${(hours >= 12) ? 'PM' : 'AM'}`;
-}
+
 
     const cloudy = {
         icon: 'CLOUDY',
@@ -89,7 +86,7 @@ export default function Hourly ({current2, weather}) {
                     <Box m={2.5} display="flex" justifyContent="center" alignItems="center"
                     height={80} width={650} border={1}
                     borderRadius={16} boxShadow={2} bgcolor="white">
-                    <Box mr={8}><h4>{timeConverter(cur.dt)}</h4></Box>
+                    <Box mr={8}><h4>{dateConverter(cur.dt)}</h4></Box>
                     {/* {cur.temp}° */}
                     <Box mr={5}><span style={{fontSize: 25, fontWeight: "bold"}}> {cur.temp.day}°</span>/ {cur.temp.min}°</Box>
                     <Box mr={2}>{icon(cur.weather[0].main)} </Box>
