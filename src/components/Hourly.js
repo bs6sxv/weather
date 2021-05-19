@@ -39,44 +39,46 @@ const cloudy = {
   
 
 const icon = (type) => {
-    console.log(type)
-    if (type==="Clouds"){
-    return (
-         <ReactAnimatedWeather
-    icon={cloudy.icon}
-    color={cloudy.color}
-    size={cloudy.size}
-    animate={cloudy.animate}
-  />
-      );}
-      if (type==="Clear"){
-        return (
-             <ReactAnimatedWeather
-        icon={clear.icon}
-        color={clear.color}
-        size={clear.size}
-        animate={clear.animate}
-      />
-          );}
-          if (type==="Rain"){
-            return (
-                 <ReactAnimatedWeather
-            icon={rain.icon}
-            color={rain.color}
-            size={rain.size}
-            animate={rain.animate}
-          />
-              );} 
-              if (type==="Wind"){
-                return (
-                     <ReactAnimatedWeather
-                icon={wind.icon}
-                color={wind.color}
-                size={wind.size}
-                animate={wind.animate}
-              />
-                  );}      
-}
+  // console.log(type);
+  switch (type) {
+    case "Clouds":
+      return (
+        <ReactAnimatedWeather
+          icon={cloudy.icon}
+          color={cloudy.color}
+          size={cloudy.size}
+          animate={cloudy.animate}
+        />
+      );
+    case "Clear":
+      return (
+        <ReactAnimatedWeather
+          icon={clear.icon}
+          color={clear.color}
+          size={clear.size}
+          animate={clear.animate}
+        />
+      );
+    case "Rain":
+      return (
+        <ReactAnimatedWeather
+          icon={rain.icon}
+          color={rain.color}
+          size={rain.size}
+          animate={rain.animate}
+        />
+      );
+    case "Wind":
+      return (
+        <ReactAnimatedWeather
+          icon={wind.icon}
+          color={wind.color}
+          size={wind.size}
+          animate={wind.animate}
+        />
+      );
+  }
+};
 
 
 const toRegularTime = (militaryTime) => {
