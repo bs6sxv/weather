@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./keys";
 import Weather from "./Weather"
 import Hourly from "./Hourly"
 import Weekly from "./Weekly"
