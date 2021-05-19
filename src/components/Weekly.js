@@ -9,47 +9,17 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import wind from './wind.png';
 import sunrise from './sunrisee.png'; 
 import sunset from './sunset.png'; 
+import {dateConverter, sunriseConverter, sunsetConverter, toRegularTime} from "../utils/timeConverters";
+import formatWeatherName from "../utils/formatWeatherName";
 
 
 export default function Hourly ({current2, weather}) {
-
-    const timeConverter = (UNIX_timestamp) => {
-        var a = new Date(UNIX_timestamp * 1000);
-var months = ['Jan','Feb','Mar','April','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var time = month + ' ' + date  ;
-  return time;
-    }
-
-    const timeConverter2 = (UNIX_timestamp) => {
-      var a = new Date(UNIX_timestamp * 1000);
-var hour = a.getHours();
-var min = a.getMinutes();
-var time = " " + hour + ':' + min;
-return time;
-  }
-
-  const timeConverter3 = (UNIX_timestamp) => {
-    var a = new Date(UNIX_timestamp * 1000);
-var hour = a.getHours();
-var min = a.getMinutes();
-var time = " " + hour + ':' + min +"0";
-return time;
-}
-  const toRegularTime = (militaryTime) => {
-    const [hours, minutes] = militaryTime.split(':');
-    return `${(hours > 12) ? hours - 12 : hours}:${minutes} ${(hours >= 12) ? 'PM' : 'AM'}`;
-}
-
     const cloudy = {
         icon: 'CLOUDY',
         color: 'grey',
         size: 45,
         animate: true
       };
-    
-    
     
       const clear = {
         icon: 'CLEAR_DAY',
@@ -100,9 +70,9 @@ return time;
 
     return (
 <div>
-<h1 style={{marginTop:20}}> {(JSON.stringify(weather.name, undefined, 4)).replace(/^"(.*)"$/, '$1')}</h1>
+<h1 style={{marginTop:20}}> {formatWeatherName(weather.name)}</h1>
             <div> {current2.daily.map((cur)=> {
-                return [
+                return (
                   <Accordion style={{backgroundColor: "transparent"}}>
                     <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -112,7 +82,7 @@ return time;
                     <Box m={2.5} display="flex" justifyContent="center" alignItems="center"
                     height={80} width={650} border={1}
                     borderRadius={16} boxShadow={2} bgcolor="white">
-                    <Box mr={8}><h4>{timeConverter(cur.dt)}</h4></Box>
+                    <Box mr={8}><h4>{dateConverter(cur.dt)}</h4></Box>
                     {/* {cur.temp}° */}
                     <Box mr={5}><span style={{fontSize: 25, fontWeight: "bold"}}> {cur.temp.day}°</span>/ {cur.temp.min}°</Box>
                     <Box mr={2}>{icon(cur.weather[0].main)} </Box>
@@ -124,8 +94,8 @@ return time;
                     <AccordionDetails>
           <Typography>
           <Box height={5} display="flex" justifyContent="center" alignItems="center">
-          <Box ml={6} mr={5} style={{fontSize: 17}}><h4><img className="photo" src={sunrise}  /> Sunrise: {toRegularTime(timeConverter2(cur.sunrise))}</h4></Box>
-          <Box mr={5} style={{fontSize: 17}}><h4> <img className="photo" src={sunset}  /> Sunset: {toRegularTime(timeConverter3(cur.sunset))}</h4></Box>
+          <Box ml={6} mr={5} style={{fontSize: 17}}><h4><img className="photo" src={sunrise}  /> Sunrise: {toRegularTime(sunriseConverter(cur.sunrise))}</h4></Box>
+          <Box mr={5} style={{fontSize: 17}}><h4> <img className="photo" src={sunset}  /> Sunset: {toRegularTime(sunsetConverter(cur.sunset))}</h4></Box>
         
           </Box >
           <Box display="flex" justifyContent="center" alignItems="center">
@@ -138,7 +108,7 @@ return time;
         </AccordionDetails>
                     
                     </Accordion>
-                ]
+                )
             })}
             </div> 
         </div>
