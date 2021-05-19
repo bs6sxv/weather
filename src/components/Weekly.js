@@ -10,20 +10,16 @@ import wind from './wind.png';
 import sunrise from './sunrisee.png'; 
 import sunset from './sunset.png'; 
 import {dateConverter, sunriseConverter, sunsetConverter, toRegularTime} from "../utils/timeConverters";
+import formatWeatherName from "../utils/formatWeatherName";
 
 
 export default function Hourly ({current2, weather}) {
-
-
-
     const cloudy = {
         icon: 'CLOUDY',
         color: 'grey',
         size: 45,
         animate: true
       };
-    
-    
     
       const clear = {
         icon: 'CLEAR_DAY',
@@ -74,7 +70,7 @@ export default function Hourly ({current2, weather}) {
 
     return (
 <div>
-<h1 style={{marginTop:20}}> {(JSON.stringify(weather.name, undefined, 4)).replace(/^"(.*)"$/, '$1')}</h1>
+<h1 style={{marginTop:20}}> {formatWeatherName(weather.name)}</h1>
             <div> {current2.daily.map((cur)=> {
                 return (
                   <Accordion style={{backgroundColor: "transparent"}}>

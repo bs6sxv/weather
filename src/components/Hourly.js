@@ -3,6 +3,7 @@ import Box from '@material-ui/core/Box';
 import ReactAnimatedWeather from 'react-animated-weather';
 import wind from './wind.png';
 import {sunsetConverter, toRegularTime} from "../utils/timeConverters"
+import formatWeatherName from "../utils/formatWeatherName";
 
 export default function Hourly ({current, weather}) {
 
@@ -80,7 +81,7 @@ const icon = (type) => {
 
     return (
 <div>
-            <h1 style={{marginTop:20}}> {(JSON.stringify(weather.name, undefined, 4)).replace(/^"(.*)"$/, '$1')}</h1>
+            <h1 style={{marginTop:20}}> {formatWeatherName(weather.name)}</h1>
             <div> {current.hourly.map((cur)=> {
                 return (
                     <Box 
